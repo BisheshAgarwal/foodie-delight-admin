@@ -1,14 +1,82 @@
-import { columns } from "@/components/dashboard/columns";
 import { DataTable } from "@/components/data-table";
 import { EmptyRestaurants } from "@/components/empty-restaurants";
 import { CreateRestaurant } from "@/components/create-restaurant";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Pencil, Trash } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ColumnDef } from "@tanstack/react-table";
+
+export type Restaurant = {
+  id: string;
+  name: number;
+  description: string;
+  location: string;
+};
 
 const Restaurants = () => {
-  const restaurants = localStorage.getItem("restaurants");
+  const [restaurantList, setRestaurantList] = useState([]);
 
-  const data = restaurants ? JSON.parse(restaurants) : [];
+  const deleteRestaurantHandler = (id: string) => {
+    let updatedRestaurants = JSON.parse(localStorage.getItem("restaurants")!);
+    updatedRestaurants = updatedRestaurants.filter(
+      (item: { id: string }) => item.id !== id
+    );
+    localStorage.setItem("restaurants", JSON.stringify(updatedRestaurants));
+    setRestaurantList(updatedRestaurants);
+  };
 
-  if (!data.length) {
+  const columns: ColumnDef<Restaurant>[] = useMemo(
+    () => [
+      {
+        accessorKey: "name",
+        header: "Name",
+      },
+      {
+        accessorKey: "description",
+        header: "Description",
+      },
+      {
+        accessorKey: "location",
+        header: "Location",
+      },
+      {
+        id: "actions",
+        cell: ({ row }) => {
+          const { id } = row.original;
+          return (
+            <div className="flex gap-5 justify-end">
+              <Link to={`/restaurants/${id}/edit`}>
+                <Button variant="ghost">
+                  <Pencil size={20} />
+                </Button>
+              </Link>
+              <Button
+                variant={"destructive"}
+                onClick={() => deleteRestaurantHandler(id)}
+              >
+                <Trash size={20} />
+              </Button>
+            </div>
+          );
+        },
+      },
+    ],
+    []
+  );
+
+  const fetchRestaurants = useCallback(() => {
+    const restaurants = localStorage.getItem("restaurants");
+    const data = restaurants ? JSON.parse(restaurants) : [];
+    return data;
+  }, []);
+
+  useEffect(() => {
+    const data = fetchRestaurants();
+    setRestaurantList(data);
+  }, [fetchRestaurants]);
+
+  if (!restaurantList.length) {
     return <EmptyRestaurants />;
   }
 
@@ -18,7 +86,7 @@ const Restaurants = () => {
         <h2>Restaurants List</h2>
         <CreateRestaurant />
       </div>
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={restaurantList} />
     </div>
   );
 };
