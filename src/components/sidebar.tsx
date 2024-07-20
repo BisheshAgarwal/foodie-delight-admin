@@ -9,7 +9,7 @@ export function Sidebar() {
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
       <div className="flex flex-col px-3 py-4 md:px-2 w-full flex-none md:w-64">
         <Link
-          className="mb-2 flex h-20 items-end justify-start rounded-md bg-black p-4 md:h-40"
+          className="mb-2 flex h-20 items-end justify-start rounded-md bg-green-500 p-4 md:h-40"
           to="/"
         >
           <div className="text-white">

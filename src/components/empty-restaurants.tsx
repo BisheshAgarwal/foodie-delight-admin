@@ -12,7 +12,12 @@ export const EmptyRestaurants = () => {
         Start by creating a restaurant for your application
       </p>
       <div className="mt-6">
-        <Button size="lg">Create a restaurant</Button>
+        <Button
+          className="bg-green-500 text-white hover:bg-green-600"
+          size="lg"
+        >
+          Create a restaurant
+        </Button>
       </div>
     </div>
   );

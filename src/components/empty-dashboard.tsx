@@ -14,7 +14,12 @@ export const EmptyBoards = () => {
       </p>
       <div className="mt-6">
         <Link to="/restaurants">
-          <Button size="lg">Go to restaurants</Button>
+          <Button
+            size="lg"
+            className="bg-green-500 text-white hover:bg-green-600"
+          >
+            Go to restaurants
+          </Button>
         </Link>
       </div>
     </div>
