@@ -1,5 +1,7 @@
+import { EmptyBoards } from "@/components/empty-dashboard";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return <EmptyBoards />;
 };
 
 export default Dashboard;
