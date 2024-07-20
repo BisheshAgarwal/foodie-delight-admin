@@ -6,23 +6,29 @@ import Restaurants from "./routes/restaurants.tsx";
 import AddRestaurant from "./routes/add-restaurant.tsx";
 import EditRestaurant from "./routes/edit-restaurant.tsx";
 import Dashboard from "./routes/dashboard.tsx";
+import { Sidebar } from "./components/sidebar.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Dashboard />,
-  },
-  {
-    path: "/restaurants",
-    element: <Restaurants />,
-  },
-  {
-    path: "/restaurants/add",
-    element: <AddRestaurant />,
-  },
-  {
-    path: "/restaurants/:id/edit",
-    element: <EditRestaurant />,
+    element: <Sidebar />,
+    children: [
+      {
+        path: "/",
+        element: <Dashboard />,
+      },
+      {
+        path: "/restaurants",
+        element: <Restaurants />,
+      },
+      {
+        path: "/restaurants/add",
+        element: <AddRestaurant />,
+      },
+      {
+        path: "/restaurants/:id/edit",
+        element: <EditRestaurant />,
+      },
+    ],
   },
 ]);
 
