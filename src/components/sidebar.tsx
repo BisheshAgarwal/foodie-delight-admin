@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 export function Sidebar() {
   return (
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-      <div className="flex h-full flex-col px-3 py-4 md:px-2 w-full flex-none md:w-64">
+      <div className="flex flex-col px-3 py-4 md:px-2 w-full flex-none md:w-64">
         <Link
           className="mb-2 flex h-20 items-end justify-start rounded-md bg-black p-4 md:h-40"
           to="/"

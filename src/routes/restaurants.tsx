@@ -1,5 +1,7 @@
+import { EmptyRestaurants } from "@/components/empty-restaurants";
+
 const Restaurants = () => {
-  return <div>Restaurants</div>;
+  return <EmptyRestaurants />;
 };
 
 export default Restaurants;
