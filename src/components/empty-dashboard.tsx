@@ -1,5 +1,5 @@
 import comingSoon from "../assets/coming-soon.svg";
-import { CreateRestaurant } from "./create-restaurant";
+import { CreateRestaurantButton } from "./create-restaurant-button";
 
 export const EmptyBoards = () => {
   return (
@@ -12,7 +12,7 @@ export const EmptyBoards = () => {
         Start by creating a restaurant for your application
       </p>
       <div className="mt-6">
-        <CreateRestaurant />
+        <CreateRestaurantButton />
       </div>
     </div>
   );

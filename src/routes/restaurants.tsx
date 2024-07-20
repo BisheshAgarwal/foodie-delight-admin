@@ -1,6 +1,6 @@
 import { DataTable } from "@/components/data-table";
 import { EmptyRestaurants } from "@/components/empty-restaurants";
-import { CreateRestaurant } from "@/components/create-restaurant";
+import { CreateRestaurantButton } from "@/components/create-restaurant-button";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Pencil, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -84,7 +84,7 @@ const Restaurants = () => {
     <div className="mx-auto p-6 md:p-12">
       <div className="flex items-center justify-between mb-5">
         <h2>Restaurants List</h2>
-        <CreateRestaurant />
+        <CreateRestaurantButton />
       </div>
       <DataTable columns={columns} data={restaurantList} />
     </div>
