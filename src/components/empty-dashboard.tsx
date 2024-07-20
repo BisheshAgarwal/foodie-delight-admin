@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import comingSoon from "../assets/coming-soon.svg";
+import { CreateRestaurant } from "./create-restaurant";
 
 export const EmptyBoards = () => {
   return (
@@ -13,14 +12,7 @@ export const EmptyBoards = () => {
         Start by creating a restaurant for your application
       </p>
       <div className="mt-6">
-        <Link to="/restaurants">
-          <Button
-            size="lg"
-            className="bg-green-500 text-white hover:bg-green-600"
-          >
-            Go to restaurants
-          </Button>
-        </Link>
+        <CreateRestaurant />
       </div>
     </div>
   );
